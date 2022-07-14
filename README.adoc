@@ -1,0 +1,40 @@
+= Spring-Boot Camel MyBatis QuickStart
+
+This example demonstrates how you can use Apache Camel with Spring Boot and camel-mybatis component
+
+
+== Running the quickstart on your machine
+To run this quickstart as a standalone project on your local machine:
+
+. Download the project and extract the archive on your local filesystem.
+. Build the project:
++
+[source,bash,options="nowrap",subs="attributes+"]
+----
+$ cd PROJECT_DIR
+$ mvn clean package
+----
+. Run the service:
+
++
+[source,bash,options="nowrap",subs="attributes+"]
+----
+$ mvn spring-boot:run
+----
++
+In the logs, you should see somethig like this:
++
+----
+17:51:50.664 [main] INFO  c.redhat.ldemasi.example.Application - Started Application in 7.739 seconds (JVM running for 8.456)
+17:51:51.752 [Camel (MyCamel) thread #1 - mybatis://getAllPeople] INFO  com.redhat.ldemasi.example.Routes - >> Incoming Danilo Landolfi
+17:51:51.753 [Camel (MyCamel) thread #2 - timer://select] INFO  com.redhat.ldemasi.example.Routes - >> Article Title Danilo Landolfi
+17:51:51.757 [Camel (MyCamel) thread #3 - timer://insert] INFO  insertLog - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+17:51:51.757 [Camel (MyCamel) thread #4 - timer://update] INFO  updateLog - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+17:52:01.660 [Camel (MyCamel) thread #2 - timer://select] INFO  com.redhat.ldemasi.example.Routes - >> Article Title Danilo Landolfi
+17:52:01.663 [Camel (MyCamel) thread #3 - timer://insert] INFO  insertLog - Exchange[ExchangePattern: InOnly, BodyType: null, Body: [Body is null]]
+17:52:01.753 [Camel (MyCamel) thread #1 - mybatis://getAllPeople] INFO  com.redhat.ldemasi.example.Routes - >> Incoming Danilo Landolfi
+17:52:01.754 [Camel (MyCamel) thread #1 - mybatis://getAllPeople] INFO  com.redhat.ldemasi.example.Routes - >> Incoming f7a21173-148e-4a0a-9677-c4e091344808
+17:52:01.754 [Camel (MyCamel) thread #1 - mybatis://getAllPeople] INFO  com.redhat.ldemasi.example.Routes - >> Incoming c8f20da5-c043-4a52-a5ee-33a6fbf6fc07
+----
+
+Is possible to see database state from H2 console pointing a browser to http://localhost:8080/h2-console/
